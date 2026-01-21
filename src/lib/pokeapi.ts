@@ -13,7 +13,6 @@ export async function fetchPokemonList(
     throw new Error(`Failed to fetch Pokemon list: ${res.status}`);
   }
   const data: PokemonListResponse = await res.json();
-  console.log(data);
   return data.results;
 }
 
@@ -24,7 +23,9 @@ export async function fetchPokemonDetails(id: string): Promise<PokemonDetails> {
   }
   // INSERT_YOUR_CODE
   // Add a short artificial delay before returning the details (e.g. simulate network)
-  await new Promise((resolve) => setTimeout(resolve, 500));
+  if (__DEV__) {
+    await new Promise((resolve) => setTimeout(resolve, 500));
+  }
   return res.json();
 }
 

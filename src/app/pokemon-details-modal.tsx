@@ -3,22 +3,24 @@ import { colors } from "@/src/theme/colors";
 import { Ionicons } from "@expo/vector-icons";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { Pressable, StyleSheet, View } from "react-native";
+import { SafeAreaView, useSafeAreaInsets } from "react-native-safe-area-context";
 
 export default function PokemonDetailsModal() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const router = useRouter();
+  const insets = useSafeAreaInsets();
 
   if (!id) return null;
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={[styles.container, { paddingTop: insets.top + 20 }]}>
       <View style={styles.modal}>
         <Pressable style={styles.closeButton} onPress={() => router.back()} hitSlop={10}>
           <Ionicons name="close" size={24} color={colors.text.primary} />
         </Pressable>
         <PokemonDetails id={id} showStatsButton={false} />
       </View>
-    </View>
+    </SafeAreaView>
   );
 }
 

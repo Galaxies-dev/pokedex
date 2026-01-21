@@ -126,10 +126,30 @@ export function PokemonDetails({ id, showStatsButton = true }: PokemonDetailsPro
   useEffect(() => {
     if (!id) return;
 
+    let active = true;
+    setLoading(true);
+    setError(null);
+
     fetchPokemonDetails(id)
-      .then(setPokemon)
-      .catch((err) => setError(err.message || "Failed to load Pokemon"))
-      .finally(() => setLoading(false));
+      .then((data) => {
+        if (active) {
+          setPokemon(data);
+        }
+      })
+      .catch((err) => {
+        if (active) {
+          setError(err.message || "Failed to load Pokemon");
+        }
+      })
+      .finally(() => {
+        if (active) {
+          setLoading(false);
+        }
+      });
+
+    return () => {
+      active = false;
+    };
   }, [id]);
 
   if (loading) {

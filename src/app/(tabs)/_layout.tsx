@@ -7,6 +7,7 @@ export default function TabLayout() {
         <Icon
           sf={{ default: "list.bullet", selected: "list.bullet" }}
           drawable="ic_menu_sort_by_size"
+          selectedColor="#E3350D"
         />
         <Label>Pokedex</Label>
       </NativeTabs.Trigger>
@@ -14,6 +15,7 @@ export default function TabLayout() {
         <Icon
           sf={{ default: "heart", selected: "heart.fill" }}
           drawable="star_on"
+          selectedColor="#E3350D"
         />
         <Label>Favorites</Label>
       </NativeTabs.Trigger>

@@ -1,11 +1,14 @@
+import { Ionicons } from "@expo/vector-icons";
+import { useFavorites } from "@/src/lib/favorites";
 import {
   fetchPokemonList,
   getPokemonId,
   getPokemonSpriteUrl,
 } from "@/src/lib/pokeapi";
 import type { Pokemon } from "@/src/types/pokemon";
+import { useFocusEffect } from "@react-navigation/native";
 import { Href, useRouter } from "expo-router";
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import {
   ActivityIndicator,
   FlatList,
@@ -21,11 +24,18 @@ const TOTAL_POKEMON = 150;
 
 export default function Pokedex() {
   const router = useRouter();
+  const { isFavorite, refresh } = useFavorites();
   const [pokemon, setPokemon] = useState<Pokemon[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [debouncedQuery, setDebouncedQuery] = useState("");
+
+  useFocusEffect(
+    useCallback(() => {
+      refresh();
+    }, [refresh])
+  );
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -59,16 +69,22 @@ export default function Pokedex() {
   const renderItem = ({ item }: { item: Pokemon }) => {
     const id = getPokemonId(item.url);
     const spriteUrl = getPokemonSpriteUrl(id);
+    const isFav = isFavorite(Number(id));
 
     return (
       <TouchableOpacity
-        style={styles.item}
+        style={[styles.item, isFav && styles.favoriteItem]}
         onPress={() => router.push(`/pokedex/${id}` as Href)}
       >
         <Image source={{ uri: spriteUrl }} style={styles.sprite} />
         <Text style={styles.name}>
           #{id} {item.name.charAt(0).toUpperCase() + item.name.slice(1)}
         </Text>
+        {isFav && (
+          <View style={styles.starContainer}>
+            <Ionicons name="star" size={20} color="#FFD700" />
+          </View>
+        )}
       </TouchableOpacity>
     );
   };
@@ -151,6 +167,15 @@ const styles = StyleSheet.create({
     marginBottom: 8,
     backgroundColor: "#f5f5f5",
     borderRadius: 8,
+  },
+  favoriteItem: {
+    backgroundColor: "#FFFBEB",
+    borderWidth: 1,
+    borderColor: "#FFD700",
+  },
+  starContainer: {
+    marginLeft: "auto",
+    paddingLeft: 8,
   },
   sprite: {
     width: 50,

@@ -48,8 +48,9 @@ export default function PokemonDetailsScreen() {
 
   const primaryType = pokemon.types[0]?.type.name || "normal";
   const backgroundColor = typeColors[primaryType] || typeColors.normal;
-  const artworkUrl = pokemon.sprites.other["official-artwork"].front_default;
-
+const artworkUrl = pokemon.sprites.other["official-artwork"].front_default 
+  ?? pokemon.sprites.front_default;
+  
   return (
     <ScrollView showsVerticalScrollIndicator={false} style={styles.container} contentContainerStyle={styles.contentContainer}>
       <View style={[styles.header, { backgroundColor }]}>

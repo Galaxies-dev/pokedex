@@ -75,8 +75,8 @@ function StatComparison({
   color: string;
 }) {
   const total = stat1 + stat2;
-  const ratio1 = (stat1 / total) * 100;
-  const ratio2 = (stat2 / total) * 100;
+  const ratio1 = total > 0 ? (stat1 / total) * 100 : 50;
+  const ratio2 = total > 0 ? (stat2 / total) * 100 : 50;
 
   return (
     <View style={styles.comparisonContainer}>
@@ -111,11 +111,17 @@ export default function PokemonStatsModal() {
   const router = useRouter();
   const [pokemon, setPokemon] = useState<PokemonDetails | null>(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
-    if (!id) return;
+    if (!id) {
+      setLoading(false);
+      return;
+    }
+
     fetchPokemonDetails(id)
       .then(setPokemon)
+      .catch(() => setError(true))
       .finally(() => setLoading(false));
   }, [id]);
 
@@ -127,7 +133,7 @@ export default function PokemonStatsModal() {
     );
   }
 
-  if (!pokemon) {
+  if (error || !pokemon) {
     return (
       <View style={styles.centered}>
         <Text style={styles.errorText}>Failed to load Pokemon stats</Text>

@@ -43,10 +43,10 @@ export interface PokemonDetails {
   stats: PokemonStat[];
   abilities: PokemonAbility[];
   sprites: {
-    front_default: string;
+    front_default: string | null;
     other: {
       "official-artwork": {
-        front_default: string;
+        front_default: string | null;
       };
     };
   };

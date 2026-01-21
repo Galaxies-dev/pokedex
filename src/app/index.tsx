@@ -1,5 +1,5 @@
-import { Redirect } from "expo-router";
+import { Redirect, Href } from "expo-router";
 
 export default function Index() {
-  return <Redirect href="/(tabs)/pokedex" />;
+  return <Redirect href={"/pokedex" as Href} />;
 }

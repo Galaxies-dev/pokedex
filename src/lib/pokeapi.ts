@@ -1,4 +1,4 @@
-import type { Pokemon, PokemonListResponse } from "@/src/types/pokemon";
+import type { Pokemon, PokemonDetails, PokemonListResponse } from "@/src/types/pokemon";
 
 const BASE_URL = "https://pokeapi.co/api/v2";
 const SPRITE_URL =
@@ -17,6 +17,13 @@ export async function fetchPokemonList(
   return data.results;
 }
 
+export async function fetchPokemonDetails(id: string): Promise<PokemonDetails> {
+  const res = await fetch(`${BASE_URL}/pokemon/${id}`);
+  if (!res.ok) {
+    throw new Error(`Failed to fetch Pokemon details: ${res.status}`);
+  }
+  return res.json();
+}
 
 export function getPokemonId(url: string): string {
   const parts = url.split("/").filter(Boolean);

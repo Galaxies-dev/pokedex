@@ -1,8 +1,37 @@
-# Welcome to your Expo app 👋
+# Pokedex
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A React Native mobile app built with Expo that lets you browse, search, and favorite Generation 1 Pokemon. Powered by the [PokeAPI](https://pokeapi.co/).
 
-## Get started
+> **Sponsored by:** [CodeRabbit](https://coderabbit.link/simon) - AI-powered code reviews
+
+## Features
+
+- **Browse** all 150 original Pokemon in a scrollable list
+- **Search** by name or Pokedex number with debounced input
+- **View details** including types, stats, abilities, height, and weight with smooth parallax animations
+- **Analyze stats** with a dedicated modal showing stat comparisons, battle insights, and rarity tiers
+- **Save favorites** with persistent local storage via AsyncStorage
+- **Tab navigation** between Pokedex and Favorites screens
+
+## Tech Stack
+
+- [Expo](https://expo.dev) 54 & React Native 0.81
+- [Expo Router](https://docs.expo.dev/router/introduction/) for file-based routing
+- [React Native Reanimated](https://docs.swmansion.com/react-native-reanimated/) for animations
+- TypeScript
+- AsyncStorage for persistence
+
+## Video Tutorial
+
+Watch and build this Pokedex step by step:
+
+<p align="center">
+  <a href="https://youtu.be/7Ttljtghm18" target="_blank">
+    <img src="https://img.youtube.com/vi/7Ttljtghm18/maxresdefault.jpg" alt="How I’d Learn React Native Today (2026 Edition)" width="100%" />
+  </a>
+</p>
+
+## Getting Started
 
 1. Install dependencies
 
@@ -16,35 +45,28 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
    npx expo start
    ```
 
-In the output, you'll find options to open the app in a
+3. Open on a device or simulator using the options shown in the terminal.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## Project Structure
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
+```
+src/
+  app/              # Screens & routing (tabs, modals, detail pages)
+  components/       # Reusable UI components (list items, detail view)
+  lib/              # API helpers & custom hooks (pokeapi, favorites)
+  types/            # TypeScript interfaces
+  constants/        # Stat label mappings
+  theme/            # Colors & type color palettes
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+[![Youtube](https://img.shields.io/static/v1?label=SimonGrimm&message=Subscribe&logo=YouTube&color=FF0000&style=for-the-badge)](https://www.youtube.com/@devsimon?sub_confirmation=1)
 
-## Learn more
+[![Twitter Follow](https://img.shields.io/twitter/follow/schlimmson?color=1DA1F2&label=Followers&logo=twitter&style=for-the-badge)](https://twitter.com/intent/follow?&screen_name=schlimmson)
 
-To learn more about developing your project with Expo, look at the following resources:
+## 🚀 More
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+**Take a shortcut from web developer to mobile development fluency with guided learning**
 
-## Join the community
+Enjoyed this project? Learn to use React Native to build production-ready, native mobile apps for both iOS and Android based on your existing web development skills.
 
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+<a href="https://galaxies.dev"><img src="banner.png" height="auto" width="100%"></a>

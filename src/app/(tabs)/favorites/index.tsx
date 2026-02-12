@@ -47,14 +47,6 @@ export default function Favorites() {
       keyExtractor={(item) => item.id.toString()}
       contentContainerStyle={styles.listContent}
       contentInsetAdjustmentBehavior="automatic"
-      ListHeaderComponent={
-        <View style={styles.header}>
-          <Text style={styles.title}>Favorites</Text>
-          <Text style={styles.subtitle}>
-            {favorites.length} {favorites.length === 1 ? "Pokemon" : "Pokemon"} captured
-          </Text>
-        </View>
-      }
       renderItem={({ item }) => (
         <FavoriteListItem
           id={item.id}

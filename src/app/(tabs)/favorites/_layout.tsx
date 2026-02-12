@@ -13,8 +13,9 @@ export default function FavoritesLayout() {
         name="index"
         options={{
           title: "Favorites",
-          headerLargeTitle: true,
-          headerLargeStyle: { backgroundColor: "#E3350D" },
+          // headerLargeTitle: true,
+          // headerLargeStyle: { backgroundColor: "#E3350D" },
+          // headerLargeTitleShadowVisible: false,
         }}
       />
     </Stack>

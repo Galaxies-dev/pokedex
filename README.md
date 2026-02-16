@@ -2,7 +2,7 @@
 
 A React Native mobile app built with Expo that lets you browse, search, and favorite Generation 1 Pokemon. Powered by the [PokeAPI](https://pokeapi.co/).
 
-> **Sponsored by:** [CodeRabbit](https://coderabbit.link/simon) - AI-powered code reviews
+> **Sponsored by:** [CodeRabbit](https://coderabbit.link/sg) - AI-powered code reviews
 
 ## Features
 

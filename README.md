@@ -26,8 +26,8 @@ A React Native mobile app built with Expo that lets you browse, search, and favo
 Watch and build this Pokedex step by step:
 
 <p align="center">
-  <a href="https://youtu.be/7Ttljtghm18" target="_blank">
-    <img src="https://img.youtube.com/vi/7Ttljtghm18/maxresdefault.jpg" alt="How I’d Learn React Native Today (2026 Edition)" width="100%" />
+  <a href="https://youtu.be/nARu6acI5kM" target="_blank">
+    <img src="https://img.youtube.com/vi/nARu6acI5kM/maxresdefault.jpg" alt="How I’d Learn React Native Today (2026 Edition)" width="100%" />
   </a>
 </p>
 
